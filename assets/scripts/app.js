@@ -1,32 +1,44 @@
 (function () {
   const sidebar = document.querySelector('.sidebar');
   const toggle = document.querySelector('[data-sidebar-toggle]');
-  const toggleIcon = document.querySelector('[data-sidebar-icon]');
+  const floatingPopover = document.querySelector('[data-floating-popover]');
 
-  function syncSidebarIcon() {
-    if (!sidebar || !toggleIcon) return;
-    const mobile = window.innerWidth <= 960;
-    const isClosed = mobile ? !sidebar.classList.contains('open') : sidebar.classList.contains('collapsed');
-    toggleIcon.textContent = isClosed ? '☰' : '✕';
+  function closeFloatingPopover() {
+    if (!floatingPopover) return;
+    floatingPopover.classList.remove('open');
+    floatingPopover.innerHTML = '';
+  }
+
+  function openFloatingPopover(trigger, html) {
+    if (!floatingPopover || !trigger) return;
+    const rect = trigger.getBoundingClientRect();
+    floatingPopover.innerHTML = html;
+    floatingPopover.style.left = `${rect.right + 10}px`;
+    floatingPopover.style.top = `${Math.max(8, rect.top)}px`;
+    floatingPopover.classList.add('open');
   }
 
   if (toggle && sidebar) {
     toggle.addEventListener('click', () => {
       if (window.innerWidth <= 960) sidebar.classList.toggle('open');
       else sidebar.classList.toggle('collapsed');
-      syncSidebarIcon();
+      closeFloatingPopover();
     });
-    window.addEventListener('resize', syncSidebarIcon);
-    syncSidebarIcon();
   }
 
   document.querySelectorAll('[data-nav-dropdown]').forEach(trigger => {
     const dropdown = trigger.closest('.nav-dropdown');
+    const submenu = dropdown?.querySelector('.nav-submenu');
     const isOpen = dropdown?.classList.contains('open');
     trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 
-    trigger.addEventListener('click', () => {
-      if (sidebar?.classList.contains('collapsed')) return;
+    trigger.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      if (sidebar?.classList.contains('collapsed')) {
+        openFloatingPopover(trigger, submenu?.innerHTML || '');
+        return;
+      }
+
       dropdown?.classList.toggle('open');
       trigger.setAttribute('aria-expanded', dropdown?.classList.contains('open') ? 'true' : 'false');
     });
@@ -37,18 +49,55 @@
   if (profileToggle && profileMenu) {
     profileToggle.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      if (sidebar?.classList.contains('collapsed')) return;
+      if (sidebar?.classList.contains('collapsed')) {
+        openFloatingPopover(profileToggle, profileMenu.innerHTML);
+        profileToggle.setAttribute('aria-expanded', 'true');
+        return;
+      }
+
+      closeFloatingPopover();
       const open = profileMenu.classList.toggle('open');
       profileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     document.addEventListener('click', (ev) => {
-      if (!profileMenu.contains(ev.target) && ev.target !== profileToggle) {
+      const clickedProfile = profileMenu.contains(ev.target) || ev.target === profileToggle || profileToggle.contains(ev.target);
+      if (!clickedProfile) {
         profileMenu.classList.remove('open');
         profileToggle.setAttribute('aria-expanded', 'false');
       }
+
+      if (floatingPopover && !floatingPopover.contains(ev.target)) {
+        closeFloatingPopover();
+      }
     });
   }
+
+  const overlayBackdrop = document.querySelector('[data-overlay-dismiss]');
+  const panelTriggers = document.querySelectorAll('[data-open-panel]');
+  const panels = document.querySelectorAll('.right-panel');
+
+  function closePanels() {
+    panels.forEach(panel => panel.classList.remove('open'));
+    overlayBackdrop?.classList.remove('open');
+  }
+
+  panelTriggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panelName = btn.dataset.openPanel;
+      const targetPanel = document.querySelector(`.right-panel[data-panel="${panelName}"]`);
+      const isOpen = targetPanel?.classList.contains('open');
+      closePanels();
+      if (!isOpen && targetPanel) {
+        targetPanel.classList.add('open');
+        overlayBackdrop?.classList.add('open');
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-overlay-dismiss]').forEach(el => {
+    el.addEventListener('click', closePanels);
+  });
 
   document.querySelectorAll('[data-loading]').forEach(btn => {
     btn.addEventListener('click', () => {
