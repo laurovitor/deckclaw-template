@@ -1,0 +1,19 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Candidates</title><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="assets/scripts/layout.js"></script><script>
+renderLayout('Candidates','Lista + ficha com componentes de formulário iguais ao padrão do app atual.',`
+<div class="grid cols-2">
+  <div class="card">
+    <h3>Novo candidato</h3>
+    <div class="field"><label>Nome completo</label><input class="input" placeholder="Ex: Lucas Rocha"></div>
+    <div class="grid cols-2"><div class="field"><label>E-mail</label><input class="input" placeholder="lucas@email.com"></div><div class="field"><label>Status</label><select><option>Triagem</option><option>Entrevista</option><option>Aprovado</option></select></div></div>
+    <div class="field"><label>Resumo</label><textarea rows="4" placeholder="Resumo do perfil e observações."></textarea></div>
+    <button class="btn btn-primary">Salvar candidato</button>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Candidato</th><th>Vaga</th><th>Etapa</th><th>Score</th></tr></thead><tbody>
+  <tr><td>Lucas Rocha</td><td>Frontend Sênior</td><td><span class="badge info">Entrevista</span></td><td>87</td></tr>
+  <tr><td>Marina Silva</td><td>DevOps Engineer</td><td><span class="badge success">Oferta</span></td><td>91</td></tr>
+  <tr><td>João Teixeira</td><td>CS Analyst</td><td><span class="badge warn">Triagem</span></td><td>74</td></tr>
+  </tbody></table></div>
+</div>
+`)
+</script><script src="assets/scripts/app.js"></script></body></html>

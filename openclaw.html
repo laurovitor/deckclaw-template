@@ -1,6 +1,7 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · OpenClaw</title><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('OpenClaw','Status de vínculos, nós conectados e saúde de sincronização.',`
-<div class="grid cols-3"><div class="card"><h3>Node raspberry</h3><span class="badge success">Online</span><p class="muted">latência 38ms</p></div><div class="card"><h3>Gateway</h3><span class="badge success">Operante</span><p class="muted">último heartbeat: agora</p></div><div class="card"><h3>Bridge DeckClaw</h3><span class="badge warn">Instável</span><p class="muted">2 retries nas últimas 24h</p></div></div>
+renderLayout('OpenClaw','Saúde de integrações e nós conectados.',`
+<div class="grid cols-3"><div class="card"><h3>Node raspberry</h3><p class="metric">Online</p><span class="badge success">latência 34ms</span></div><div class="card"><h3>Gateway</h3><p class="metric">Operante</p><span class="badge success">heartbeat agora</span></div><div class="card"><h3>Bridge DeckClaw</h3><p class="metric">Instável</p><span class="badge warn">2 retries / 24h</span></div></div>
+<div class="card" style="margin-top:16px"><h3>Logs resumidos</h3><ul class="list"><li>16:02 sincronização completa.</li><li>15:40 reconexão automática bem-sucedida.</li><li>14:21 alerta de latência elevada.</li></ul></div>
 `)
 </script><script src="assets/scripts/app.js"></script></body></html>

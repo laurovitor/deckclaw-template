@@ -1,0 +1,11 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Jobs</title><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="assets/scripts/layout.js"></script><script>
+renderLayout('Jobs','Lista de vagas com filtros, badges de status e ações rápidas.',`
+<div class="card"><div class="toolbar"><input class="input" placeholder="Buscar vaga, área ou requisitante"><select><option>Status: todos</option></select><button class="btn btn-secondary">Exportar CSV</button><button class="btn btn-primary">Nova vaga</button></div></div>
+<div class="table-wrap" style="margin-top:16px"><table><thead><tr><th>Vaga</th><th>Time</th><th>Candidatos</th><th>Status</th><th>Atualizado</th><th>Ações</th></tr></thead><tbody>
+<tr><td>Frontend Sênior</td><td>Produto</td><td>42</td><td><span class="badge success">Ativa</span></td><td>Hoje</td><td><button class="btn btn-secondary">Abrir</button></td></tr>
+<tr><td>DevOps Engineer</td><td>Infra</td><td>31</td><td><span class="badge info">Triagem</span></td><td>Ontem</td><td><button class="btn btn-secondary">Abrir</button></td></tr>
+<tr><td>CS Analyst</td><td>Sucesso</td><td>19</td><td><span class="badge warn">Pendente</span></td><td>2 dias</td><td><button class="btn btn-secondary">Abrir</button></td></tr>
+</tbody></table></div>
+`)
+</script><script src="assets/scripts/app.js"></script></body></html>
