@@ -1,0 +1,10 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Tables</title><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="assets/scripts/layout.js"></script><script>
+renderLayout('Tables','Listagem com filtros, seleção em massa e ações rápidas.',`
+<div class="card"><div class="grid cols-3"><input class="input" placeholder="Buscar por nome ou ID"><select><option>Status: todos</option></select><button class="btn btn-secondary">Exportar CSV</button></div></div>
+<div class="table-wrap" style="margin-top:16px"><table><thead><tr><th><input type="checkbox"></th><th>Projeto</th><th>Responsável</th><th>Status</th><th>Atualizado</th><th>Ações</th></tr></thead><tbody>
+<tr><td><input type="checkbox"></td><td>Atlas</td><td>Maria</td><td><span class="badge success">Ativo</span></td><td>Hoje</td><td><button class="btn btn-secondary">Abrir</button></td></tr>
+<tr><td><input type="checkbox"></td><td>Orion</td><td>Carlos</td><td><span class="badge warn">Pendente</span></td><td>Ontem</td><td><button class="btn btn-secondary">Abrir</button></td></tr>
+</tbody></table></div>
+`)
+</script><script src="assets/scripts/app.js"></script></body></html>

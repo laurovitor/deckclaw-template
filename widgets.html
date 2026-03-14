@@ -1,0 +1,8 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Widgets</title><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="assets/scripts/layout.js"></script><script>
+renderLayout('Widgets','Cards, badges, tabs, modal e toasts de referência.',`
+<div class="grid cols-3"><div class="card"><h3>Card padrão</h3><p class="muted">Com sombra leve e borda sutil.</p></div><div class="card"><h3>Badges</h3><span class="badge info">Info</span> <span class="badge success">Success</span> <span class="badge warn">Warning</span> <span class="badge danger">Danger</span></div><div class="card"><h3>Botões</h3><button class="btn btn-primary" data-loading>Loading</button> <button class="btn btn-secondary">Secundário</button> <button class="btn btn-danger" disabled>Disabled</button></div></div>
+<div class="card" style="margin-top:16px"><div class="tabs"><div class="tab active">Resumo</div><div class="tab">Configuração</div><div class="tab">Histórico</div></div><p class="muted">Tabs visuais para navegação de seções.</p><button class="btn btn-secondary" data-open-modal="#demoModal">Abrir modal</button> <button class="btn btn-primary" data-toast="Widget salvo com sucesso">Mostrar toast</button></div>
+<div class="modal" id="demoModal"><div class="modal-dialog"><h3>Modal de confirmação</h3><p class="muted">Deseja aplicar esse template visual ao novo módulo?</p><button class="btn btn-primary" data-close-modal>Confirmar</button> <button class="btn btn-secondary" data-close-modal>Cancelar</button></div></div>
+`)
+</script><script src="assets/scripts/app.js"></script></body></html>
