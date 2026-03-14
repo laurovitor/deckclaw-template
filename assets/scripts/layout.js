@@ -14,9 +14,25 @@ function icon(name, cls = '') {
     bell: '<path d="M7.5 9.5a4.5 4.5 0 1 1 9 0v3.3l1.5 2v.7h-12v-.7l1.5-2V9.5Zm2.7 8.5a1.8 1.8 0 0 0 3.6 0"/>',
     menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
     chevron: '<path d="m8 10 4 4 4-4"/>',
-    close: '<path d="M6 6l12 12M18 6 6 18"/>'
+    'chevron-left': '<path d="m14.5 6-6 6 6 6"/>',
+    'chevron-right': '<path d="m9.5 6 6 6-6 6"/>',
+    close: '<path d="M6 6l12 12M18 6 6 18"/>',
+    user: '<path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0"/>',
+    plug: '<path d="M9 3v5m6-5v5M8 8h8v2a4 4 0 0 1-4 4h0a4 4 0 0 1-4-4V8Zm4 6v7"/>',
+    logout: '<path d="M14 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-3m-4-4h10m0 0-3-3m3 3-3 3"/>',
+    more: '<circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/>',
+    check: '<path d="m5 12 4 4 10-10"/>',
+    trash: '<path d="M4 7h16M10 11v6m4-6v6M9 7l1-2h4l1 2m-8 0 1 12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2l1-12"/>',
+    ban: '<circle cx="12" cy="12" r="9"/><path d="m8.5 8.5 7 7"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 10v6m0-9h.01"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    spark: '<path d="m12 3 1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3Z"/>'
   };
   return `<svg class="dc-icon ${cls}" viewBox="0 0 24 24" aria-hidden="true">${icons[name] || ''}</svg>`;
+}
+
+function dropdownLink(href, label, iconName) {
+  return `<a href="${href}"><span class="menu-item-icon" aria-hidden="true">${icon(iconName)}</span><span>${label}</span></a>`;
 }
 
 function navLink(href, label, iconName, isSub = false) {
@@ -86,9 +102,9 @@ function renderLayout(title, subtitle, body) {
         </button>
 
         <div class="profile-menu" data-profile-menu>
-          <a href="settings.html">Minha conta</a>
-          <a href="openclaw.html">Integrações</a>
-          <a href="login.html">Logout</a>
+          ${dropdownLink('settings.html', 'Minha conta', 'user')}
+          ${dropdownLink('openclaw.html', 'Integrações', 'plug')}
+          ${dropdownLink('login.html', 'Logout', 'logout')}
         </div>
       </div>
     </aside>
@@ -97,7 +113,7 @@ function renderLayout(title, subtitle, body) {
       <header class="topbar">
         <div class="topbar-left">
           <button class="btn btn-secondary sidebar-toggle" data-sidebar-toggle aria-label="Abrir ou fechar menu lateral" title="Menu">
-            <span data-sidebar-icon>${icon('menu')}</span>
+            <span data-sidebar-icon>${icon('chevron-left', 'sidebar-toggle-icon')}</span>
           </button>
           <div>
             <strong>${title}</strong>
@@ -118,7 +134,7 @@ function renderLayout(title, subtitle, body) {
 
       <footer class="footer">
         <div class="footer-left">
-          DeckClaw · <span class="footer-version" tabindex="0">v1.1.1<span class="version-tooltip">Última release: 14/03/2026 · 16:32 (GMT-3)</span></span>
+          <span class="footer-brand"><img class="footer-brand-icon" src="assets/icons/deckclaw-mark.svg" alt="" aria-hidden="true">DeckClaw</span> · <span class="footer-version" tabindex="0">v1.1.1<span class="version-tooltip">Última release: 14/03/2026 · 16:32 (GMT-3)</span></span>
         </div>
         <div class="footer-right">
           <a href="#">suporte</a>
@@ -133,11 +149,68 @@ function renderLayout(title, subtitle, body) {
   <div class="overlay-backdrop" data-overlay-dismiss></div>
   <aside class="right-panel" data-panel="chat" aria-label="Painel de chat">
     <div class="panel-head"><strong>Chat</strong><button class="panel-close" data-overlay-dismiss aria-label="Fechar">${icon('close')}</button></div>
-    <div class="panel-body muted">Conversa rápida com o time. Esse painel abre em overlay sem deslocar o layout.</div>
+    <div class="panel-body panel-list">
+      <article class="mini-card">
+        <img class="mini-avatar" src="https://i.pravatar.cc/80?img=32" alt="Avatar de Ana Souza">
+        <div class="mini-card-content"><strong>Ana Souza</strong><p>Acabei de subir a versão final do board.</p></div>
+        <div class="mini-actions">
+          <button class="icon-btn icon-btn-sm" data-dropdown-toggle aria-label="Ações da conversa com Ana Souza">${icon('more')}</button>
+          <div class="mini-dropdown" data-dropdown-menu>
+            <button type="button" data-toast="Conversa marcada como lida"><span class="menu-item-icon">${icon('check')}</span><span>Marcar como lida</span></button>
+            <button type="button" data-toast="Conversa apagada"><span class="menu-item-icon">${icon('trash')}</span><span>Apagar conversa</span></button>
+            <button type="button" data-toast="Contato bloqueado"><span class="menu-item-icon">${icon('ban')}</span><span>Bloquear</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="mini-card">
+        <img class="mini-avatar" src="https://i.pravatar.cc/80?img=15" alt="Avatar de Bruno Lima">
+        <div class="mini-card-content"><strong>Bruno Lima</strong><p>Você consegue revisar as notificações ainda hoje?</p></div>
+        <div class="mini-actions">
+          <button class="icon-btn icon-btn-sm" data-dropdown-toggle aria-label="Ações da conversa com Bruno Lima">${icon('more')}</button>
+          <div class="mini-dropdown" data-dropdown-menu>
+            <button type="button" data-toast="Conversa marcada como lida"><span class="menu-item-icon">${icon('check')}</span><span>Marcar como lida</span></button>
+            <button type="button" data-toast="Conversa apagada"><span class="menu-item-icon">${icon('trash')}</span><span>Apagar conversa</span></button>
+            <button type="button" data-toast="Contato bloqueado"><span class="menu-item-icon">${icon('ban')}</span><span>Bloquear</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="mini-card">
+        <img class="mini-avatar" src="https://i.pravatar.cc/80?img=5" alt="Avatar de Carla Freitas">
+        <div class="mini-card-content"><strong>Carla Freitas</strong><p>Novo candidato aceitou o convite para entrevista.</p></div>
+        <div class="mini-actions">
+          <button class="icon-btn icon-btn-sm" data-dropdown-toggle aria-label="Ações da conversa com Carla Freitas">${icon('more')}</button>
+          <div class="mini-dropdown" data-dropdown-menu>
+            <button type="button" data-toast="Conversa marcada como lida"><span class="menu-item-icon">${icon('check')}</span><span>Marcar como lida</span></button>
+            <button type="button" data-toast="Conversa apagada"><span class="menu-item-icon">${icon('trash')}</span><span>Apagar conversa</span></button>
+            <button type="button" data-toast="Contato bloqueado"><span class="menu-item-icon">${icon('ban')}</span><span>Bloquear</span></button>
+          </div>
+        </div>
+      </article>
+    </div>
   </aside>
   <aside class="right-panel" data-panel="notifications" aria-label="Painel de notificações">
-    <div class="panel-head"><strong>Notificações</strong><button class="panel-close" data-overlay-dismiss aria-label="Fechar">${icon('close')}</button></div>
-    <div class="panel-body muted">2 notificações novas: build finalizado e novo candidato marcado para entrevista.</div>
+    <div class="panel-head panel-head-actions">
+      <strong>Notificações</strong>
+      <button class="btn btn-secondary btn-xs" data-mark-all-read><span class="menu-item-icon">${icon('check')}</span><span>Marcar todos como lido</span></button>
+      <button class="panel-close" data-overlay-dismiss aria-label="Fechar">${icon('close')}</button>
+    </div>
+    <div class="panel-body panel-list" data-notification-list>
+      <article class="mini-card notification-card" data-notification-item>
+        <span class="mini-badge">${icon('spark')}</span>
+        <div class="mini-card-content"><strong>Build finalizado</strong><p>Deploy da sprint #24 concluído com sucesso.</p></div>
+        <button class="icon-btn icon-btn-sm" data-close-item aria-label="Fechar notificação">${icon('close')}</button>
+      </article>
+      <article class="mini-card notification-card" data-notification-item>
+        <span class="mini-badge">${icon('clock')}</span>
+        <div class="mini-card-content"><strong>Lembrete de entrevista</strong><p>Entrevista com Fernanda às 18:30.</p></div>
+        <button class="icon-btn icon-btn-sm" data-close-item aria-label="Fechar notificação">${icon('close')}</button>
+      </article>
+      <article class="mini-card notification-card" data-notification-item>
+        <span class="mini-badge">${icon('info')}</span>
+        <div class="mini-card-content"><strong>Nova atualização</strong><p>Checklist de QA foi atualizado no projeto DeckClaw.</p></div>
+        <button class="icon-btn icon-btn-sm" data-close-item aria-label="Fechar notificação">${icon('close')}</button>
+      </article>
+    </div>
   </aside>
   <div class="floating-popover" data-floating-popover></div>
   <div class="toast-stack"></div>`;
