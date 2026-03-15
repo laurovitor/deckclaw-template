@@ -22,7 +22,7 @@ img { max-width: 100%; }
 .brand-title { font-size: var(--fs-base); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
 .nav-group + .nav-group { margin-top: 6px; }
 .nav-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; margin: var(--space-3) var(--space-3) var(--space-2); }
-.nav { display: grid; gap: var(--space-1); }
+.nav { display: grid !important; gap: var(--space-1); }
 .nav a, .nav-dropdown-trigger { color: #334155; padding: 10px var(--space-3); border-radius: 10px; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; border: 0; background: transparent; width: 100%; cursor: pointer; text-align: left; }
 .nav a.active, .nav a:hover, .nav-dropdown-trigger:hover, .nav-dropdown.open > .nav-dropdown-trigger { background: var(--surface-hover); color: #1e293b; }
 .nav-icon { width: 20px; min-width: 20px; display: inline-grid; place-items: center; }
