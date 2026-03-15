@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f1f5f9;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --surface-hover: #eef2ff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --success: #16a34a;
+    --warn: #d97706;
+    --danger: #dc2626;
+    --info: #2563eb;
+    --border: #e2e8f0;
+  }
+
+  :root[data-theme='dark'] {
+    --bg: #0b1220;
+    --surface: #0f172a;
+    --surface-soft: #111b31;
+    --surface-hover: #18223a;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --primary: #60a5fa;
+    --primary-hover: #3b82f6;
+    --success: #22c55e;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+    --info: #60a5fa;
+    --border: #243244;
+  }
+}
+
+@layer components {
+  .tw-shell {
+    @apply bg-bg text-text;
+  }
+  .tw-card {
+    @apply rounded-xl border border-border bg-surface shadow-card;
+  }
+  .tw-card-soft {
+    @apply rounded-xl border border-border bg-surface-soft;
+  }
+}

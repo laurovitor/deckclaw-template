@@ -1,0 +1,28 @@
+{
+  "name": "deckclaw-template",
+  "version": "1.0.0",
+  "description": "Template visual estático para referência de UX/UI do novo DeckClaw.",
+  "main": "index.js",
+  "scripts": {
+    "build:tw": "tailwindcss -i ./assets/styles/tw.css -o ./assets/styles/tw-build.css --minify",
+    "watch:tw": "tailwindcss -i ./assets/styles/tw.css -o ./assets/styles/tw-build.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurovitor/deckclaw-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/laurovitor/deckclaw-template/issues"
+  },
+  "homepage": "https://github.com/laurovitor/deckclaw-template#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
+  }
+}
