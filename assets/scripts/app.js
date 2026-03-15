@@ -49,19 +49,36 @@
       : '<i class="ri ri-arrow-left-s-line sidebar-toggle-icon" aria-hidden="true"></i>';
   }
 
+  function syncBodyState() {
+    const isMobile = window.innerWidth <= 960;
+    const sidebarOpenMobile = isMobile && sidebar?.classList.contains('open');
+    const hasOpenPanel = !!document.querySelector('.right-panel.open');
+
+    document.body.classList.toggle('sidebar-collapsed', !isMobile && !!sidebar?.classList.contains('collapsed'));
+    document.body.classList.toggle('has-overlay', sidebarOpenMobile || hasOpenPanel);
+    document.body.classList.toggle('no-scroll', sidebarOpenMobile || hasOpenPanel);
+
+    if (overlayBackdrop) {
+      overlayBackdrop.classList.toggle('open', sidebarOpenMobile || hasOpenPanel);
+    }
+  }
+
   if (toggles.length && sidebar) {
     updateSidebarIcon();
+    syncBodyState();
     toggles.forEach((toggle) => {
       toggle.addEventListener('click', () => {
         if (window.innerWidth <= 960) sidebar.classList.toggle('open');
         else sidebar.classList.toggle('collapsed');
         closeFloatingPopover();
         updateSidebarIcon();
+        syncBodyState();
       });
     });
     window.addEventListener('resize', () => {
       closeFloatingPopover();
       updateSidebarIcon();
+      syncBodyState();
     });
   }
 
@@ -119,7 +136,10 @@
 
   function closePanels() {
     panels.forEach(panel => panel.classList.remove('open'));
-    overlayBackdrop?.classList.remove('open');
+    if (window.innerWidth <= 960) {
+      sidebar?.classList.remove('open');
+    }
+    syncBodyState();
   }
 
   panelTriggers.forEach(btn => {
@@ -130,8 +150,8 @@
       closePanels();
       if (!isOpen && targetPanel) {
         targetPanel.classList.add('open');
-        overlayBackdrop?.classList.add('open');
       }
+      syncBodyState();
     });
   });
 
@@ -200,4 +220,6 @@
       if (input.value && arr[i + 1]) arr[i + 1].focus();
     });
   });
+
+  syncBodyState();
 })();
