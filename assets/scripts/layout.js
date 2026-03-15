@@ -67,11 +67,11 @@ function renderLayout(title, subtitle, body) {
       <div class="sidebar-nav-wrap">
         ${navGroup('Principal', `
           ${navLink('index.html', 'Dashboard', 'dashboard')}
-          ${navLink('agents.html', 'Agentes', 'candidate')}
-          ${navLink('openclaw.html', 'OpenClaw', 'bot')}
           ${navLink('projects.html', 'Projetos', 'folder')}
           ${navLink('tasks.html', 'Tarefas', 'puzzle')}
+          ${navLink('agents.html', 'Agentes', 'candidate')}
           ${navLink('reports.html', 'Relatórios', 'briefcase')}
+          ${navLink('openclaw.html', 'OpenClaws', 'bot')}
           ${navLink('users.html', 'Usuários', 'users')}
           ${navLink('settings.html', 'Configurações', 'settings')}
         `)}
@@ -79,17 +79,31 @@ function renderLayout(title, subtitle, body) {
         <div class="nav-separator" role="separator" aria-hidden="true"></div>
 
         ${navGroup('Admin', `
-          ${navLink('users.html', 'Users', 'users')}
-          ${navLink('openclaw.html', 'OpenClaw', 'bot')}
-          ${navLink('settings.html', 'Settings', 'settings')}
+          ${navLink('admin-workspaces.html', 'Workspaces', 'folder')}
+          ${navLink('admin-users.html', 'Usuários', 'users')}
+          ${navLink('admin-plans-products.html', 'Planos e Produtos', 'briefcase')}
+          ${navLink('admin-support.html', 'Suporte', 'chat')}
+          ${navLink('admin-reports.html', 'Relatórios', 'dashboard')}
+          ${navLink('admin-staff.html', 'Staff', 'candidate')}
+          ${navLink('admin-settings.html', 'Configurações', 'settings')}
         `)}
 
         <div class="nav-separator" role="separator" aria-hidden="true"></div>
 
         ${navGroup('Referência', `
+          ${navLink('elements.html', 'Elementos básicos', 'puzzle')}
+          ${navLink('ref-form-selects.html', 'Form selects', 'dot')}
+          ${navLink('ref-pickers.html', 'Pickers', 'dot')}
+          ${navLink('ref-inputmasks.html', 'Inputmasks', 'dot')}
+          ${navLink('ref-validation.html', 'Validation', 'dot')}
+          ${navLink('ref-wizard.html', 'Wizard', 'dot')}
+          ${navLink('ref-editors.html', 'Editors', 'dot')}
+          ${navLink('ref-file-uploads.html', 'Files uploads', 'dot')}
+          ${navLink('ref-form-layouts.html', 'Form layouts', 'dot')}
+          ${navLink('ref-checkbox-radios.html', 'Checkboxs e radios', 'dot')}
+          ${navLink('ref-tables.html', 'Tables', 'dot')}
           ${navLink('widgets.html', 'UI Kit', 'brick')}
           ${navLink('icons.html', 'Remix Icons', 'spark')}
-          ${navLink('elements.html', 'Elementos básicos', 'puzzle')}
         `)}
       </div>
 
