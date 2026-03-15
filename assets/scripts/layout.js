@@ -57,12 +57,14 @@ function renderLayout(title, subtitle, body) {
   document.body.innerHTML = `
   <div class="shell">
     <aside class="sidebar" aria-label="Menu lateral">
-      <div>
+      <div class="sidebar-brand-wrap">
         <div class="brand">
           <img class="brand-mark-img" src="assets/icons/brand.svg" alt="DeckClaw">
           <div class="brand-title">DeckClaw</div>
         </div>
+      </div>
 
+      <div class="sidebar-nav-wrap">
         ${navGroup('Principal', `
           ${navLink('index.html', 'Dashboard', 'dashboard')}
           ${navLink('agents.html', 'Agentes', 'candidate')}
