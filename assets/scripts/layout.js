@@ -10,6 +10,7 @@ function icon(name, cls = '') {
     settings: 'ri-settings-3-line',
     brick: 'ri-layout-grid-line',
     candidate: 'ri-user-search-line',
+    menu: 'ri-menu-line',
     chat: 'ri-chat-3-line',
     bell: 'ri-notification-3-line',
     chevron: 'ri-arrow-down-s-line',
@@ -119,14 +120,19 @@ function renderLayout(title, subtitle, body) {
     <main class="main">
       <header class="topbar">
         <div class="topbar-left">
-          <div>
+          <div class="topbar-title-wrap">
             <strong>${title}</strong>
             ${subtitle ? `<div class="topbar-subtitle">${subtitle}</div>` : ''}
+          </div>
+          <div class="topbar-mobile-brand">
+            <img src="assets/icons/brand.svg" alt="DeckClaw" class="topbar-mobile-brand-icon">
+            <span class="topbar-mobile-brand-name">DeckClaw</span>
           </div>
         </div>
         <div class="topbar-right">
           <button class="icon-btn" data-open-panel="chat" aria-label="Abrir chat" title="Chat">${icon('chat')}</button>
           <button class="icon-btn notif-btn" data-open-panel="notifications" aria-label="Abrir notificações" title="Notificações">${icon('bell')}<span class="notif-badge" aria-label="2 notificações novas">2</span></button>
+          <button class="icon-btn mobile-menu-btn" data-sidebar-toggle-top aria-label="Abrir menu" title="Menu">${icon('menu')}</button>
         </div>
       </header>
 

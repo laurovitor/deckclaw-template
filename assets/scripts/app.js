@@ -1,6 +1,6 @@
 (function () {
   const sidebar = document.querySelector('.sidebar');
-  const toggle = document.querySelector('[data-sidebar-toggle]');
+  const toggles = document.querySelectorAll('[data-sidebar-toggle], [data-sidebar-toggle-top]');
   const sidebarIcon = document.querySelector('[data-sidebar-icon]');
   const floatingPopover = document.querySelector('[data-floating-popover]');
 
@@ -49,13 +49,15 @@
       : '<i class="ri ri-arrow-left-s-line sidebar-toggle-icon" aria-hidden="true"></i>';
   }
 
-  if (toggle && sidebar) {
+  if (toggles.length && sidebar) {
     updateSidebarIcon();
-    toggle.addEventListener('click', () => {
-      if (window.innerWidth <= 960) sidebar.classList.toggle('open');
-      else sidebar.classList.toggle('collapsed');
-      closeFloatingPopover();
-      updateSidebarIcon();
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        if (window.innerWidth <= 960) sidebar.classList.toggle('open');
+        else sidebar.classList.toggle('collapsed');
+        closeFloatingPopover();
+        updateSidebarIcon();
+      });
     });
     window.addEventListener('resize', () => {
       closeFloatingPopover();
