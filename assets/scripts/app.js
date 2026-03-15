@@ -202,6 +202,18 @@
     btn.addEventListener('click', () => btn.closest('.modal')?.classList.remove('open'));
   });
 
+  const themeToggle = document.querySelector('#themeToggle');
+  const savedTheme = localStorage.getItem('deckclaw-theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (themeToggle) {
+    themeToggle.checked = savedTheme === 'dark';
+    themeToggle.addEventListener('change', () => {
+      const next = themeToggle.checked ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('deckclaw-theme', next);
+    });
+  }
+
   const toastStack = document.querySelector('.toast-stack');
   document.querySelectorAll('[data-toast]').forEach(btn => {
     btn.addEventListener('click', () => {

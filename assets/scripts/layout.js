@@ -65,21 +65,13 @@ function renderLayout(title, subtitle, body) {
 
         ${navGroup('Principal', `
           ${navLink('index.html', 'Dashboard', 'dashboard')}
-          ${navLink('jobs.html', 'Jobs', 'briefcase')}
-          ${navLink('projects.html', 'Projects', 'folder')}
-          ${navLink('candidates.html', 'Candidates', 'candidate')}
-          <div class="nav-dropdown ${location.pathname.endsWith('tasks.html') || location.pathname.endsWith('tables.html') || location.pathname.endsWith('forms.html') ? 'open' : ''}">
-            <button class="nav-dropdown-trigger" data-nav-dropdown aria-expanded="false" title="Operações">
-              <span class="nav-icon" aria-hidden="true">${icon('puzzle')}</span>
-              <span class="nav-label">Operações</span>
-              <span class="nav-caret" aria-hidden="true">${icon('chevron', 'caret-icon')}</span>
-            </button>
-            <div class="nav-submenu">
-              ${navLink('tasks.html', 'Tasks', 'dot', true)}
-              ${navLink('tables.html', 'Tables Legacy', 'dot', true)}
-              ${navLink('forms.html', 'Forms Legacy', 'dot', true)}
-            </div>
-          </div>
+          ${navLink('agents.html', 'Agentes', 'candidate')}
+          ${navLink('openclaw.html', 'OpenClaw', 'bot')}
+          ${navLink('projects.html', 'Projetos', 'folder')}
+          ${navLink('tasks.html', 'Tarefas', 'puzzle')}
+          ${navLink('reports.html', 'Relatórios', 'briefcase')}
+          ${navLink('users.html', 'Usuários', 'users')}
+          ${navLink('settings.html', 'Configurações', 'settings')}
         `)}
 
         <div class="nav-separator" role="separator" aria-hidden="true"></div>
@@ -95,6 +87,7 @@ function renderLayout(title, subtitle, body) {
         ${navGroup('Referência', `
           ${navLink('widgets.html', 'UI Kit', 'brick')}
           ${navLink('icons.html', 'Remix Icons', 'spark')}
+          ${navLink('elements.html', 'Elementos básicos', 'puzzle')}
         `)}
       </div>
 
@@ -108,6 +101,13 @@ function renderLayout(title, subtitle, body) {
         <div class="profile-menu" data-profile-menu>
           ${dropdownLink('settings.html', 'Minha conta', 'user')}
           ${dropdownLink('openclaw.html', 'Integrações', 'plug')}
+          ${dropdownLink('support.html', 'Suporte', 'chat')}
+          ${dropdownLink('terms.html', 'Termos', 'info')}
+          <label class="theme-switch-row" for="themeToggle">
+            <span class="menu-item-icon">${icon('spark')}</span>
+            <span>Tema escuro</span>
+            <span class="theme-switch"><input id="themeToggle" type="checkbox" aria-label="Alternar tema"><span class="theme-switch-slider"></span></span>
+          </label>
           ${dropdownLink('login.html', 'Logout', 'logout')}
         </div>
       </div>
@@ -147,9 +147,9 @@ function renderLayout(title, subtitle, body) {
           <span class="footer-brand"><img class="footer-brand-icon" src="assets/icons/brand.svg" alt="" aria-hidden="true">DeckClaw</span> · <span class="footer-version" tabindex="0">v1.1.1-build<span class="version-tooltip">Última release: 14/03/2026 · 16:32 (GMT-3)</span></span>
         </div>
         <div class="footer-right">
-          <a href="#">suporte</a>
+          <a href="support.html">suporte</a>
           <span>-</span>
-          <a href="#">apidoc</a>
+          <a href="https://deckclaw.api.br" target="_blank" rel="noopener">apidoc</a>
           <span>-</span>
           <a href="terms.html">terms</a>
         </div>

@@ -1,11 +1,27 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Login</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
-<script src="assets/scripts/layout.js"></script><script>
-renderLayout('Login','Acesse seu workspace com segurança.',`
-<div class="card" style="max-width:480px">
-  <div class="field"><label>E-mail</label><input class="input" type="email" placeholder="voce@empresa.com"></div>
-  <div class="field"><label>Senha</label><input class="input" type="password" placeholder="••••••••"></div>
-  <div class="field"><button class="btn btn-primary" data-loading>Entrar</button> <button class="btn btn-secondary">Entrar com SSO</button></div>
-  <p class="muted">Esqueceu sua senha? <a href="#">Recuperar acesso</a></p>
-</div>
-`)
-</script><script src="assets/scripts/app.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DeckClaw · Login</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg" />
+  <link rel="stylesheet" href="assets/styles/base.css" />
+  <link rel="stylesheet" href="assets/styles/components.css" />
+</head>
+<body>
+  <main class="public-page">
+    <section class="public-card" style="max-width:420px">
+      <h1>Entrar no DeckClaw</h1>
+      <p class="muted">Acesse sua conta para continuar.</p>
+      <div class="field"><label>Email</label><input type="email" placeholder="voce@empresa.com" /></div>
+      <div class="field"><label>Senha</label><input type="password" placeholder="••••••••" /></div>
+      <button class="btn btn-primary" style="width:100%">Entrar</button>
+      <p class="muted" style="margin-top:12px">Não tem conta? <a href="register.html">Criar cadastro</a></p>
+    </section>
+  </main>
+  <footer class="public-footer">
+    <div class="footer-left"><span class="footer-brand"><img class="footer-brand-icon" src="assets/icons/brand.svg" alt="">DeckClaw</span> · <span class="footer-version">v1.1.1-build</span></div>
+    <div class="footer-right"><a href="support.html">suporte</a><span>-</span><a href="https://deckclaw.api.br" target="_blank">apidoc</a><span>-</span><a href="terms.html">terms</a></div>
+  </footer>
+</body>
+</html>

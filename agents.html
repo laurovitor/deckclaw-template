@@ -1,0 +1,17 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Agentes</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="assets/scripts/layout.js"></script><script>
+renderLayout('Agentes','Gestão base dos agentes conectados ao ecossistema OpenClaw.',`
+<article class="card">
+  <h3>Lista de agentes</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Agent ID</th><th>Função</th><th>OpenClaw</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>manager-ops</td><td>Orquestração</td><td>raspberry-main</td><td><span class="badge success">online</span></td></tr>
+        <tr><td>railway-ops</td><td>Deploy/Infra</td><td>raspberry-main</td><td><span class="badge info">idle</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+`)
+</script><script src="assets/scripts/app.js"></script></body></html>

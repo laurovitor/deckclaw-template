@@ -1,0 +1,26 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Elementos básicos</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="assets/scripts/layout.js"></script><script>
+renderLayout('Elementos básicos','Referência visual inspirada no estilo clean corporativo (base para forms).',`
+<div class="grid cols-2">
+  <article class="card">
+    <h3>Inputs</h3>
+    <div class="field"><label>Texto</label><input type="text" placeholder="Digite aqui"></div>
+    <div class="field"><label>Email</label><input type="email" placeholder="email@exemplo.com"></div>
+    <div class="field"><label>Select</label><select><option>Selecione</option><option>Opção 1</option></select></div>
+    <div class="field"><label>Textarea</label><textarea rows="4" placeholder="Mensagem"></textarea></div>
+  </article>
+  <article class="card">
+    <h3>Controles</h3>
+    <p class="muted">Exemplos de botões e estados.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-primary">Primário</button>
+      <button class="btn btn-secondary">Secundário</button>
+      <button class="btn" disabled>Desabilitado</button>
+    </div>
+    <hr style="margin:16px 0;border:0;border-top:1px solid var(--border)">
+    <label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> Aceitar termos</label>
+    <label style="display:flex;align-items:center;gap:8px;margin-top:8px"><input type="radio" name="x"> Opção A</label>
+  </article>
+</div>
+`)
+</script><script src="assets/scripts/app.js"></script></body></html>
