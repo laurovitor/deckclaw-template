@@ -3,6 +3,7 @@
   const toggles = document.querySelectorAll('[data-sidebar-toggle], [data-sidebar-toggle-top]');
   const sidebarIcon = document.querySelector('[data-sidebar-icon]');
   const floatingPopover = document.querySelector('[data-floating-popover]');
+  const overlayBackdrop = document.querySelector('[data-overlay-dismiss]');
 
   function closeFloatingPopover() {
     if (!floatingPopover) return;
@@ -130,7 +131,6 @@
     });
   }
 
-  const overlayBackdrop = document.querySelector('[data-overlay-dismiss]');
   const panelTriggers = document.querySelectorAll('[data-open-panel]');
   const panels = document.querySelectorAll('.right-panel');
 
