@@ -9,7 +9,7 @@ img { max-width: 100%; }
 .ri { font-size: 18px; line-height: 1; }
 
 .shell { display: flex; min-height: 100vh; overflow-x: clip; }
-.sidebar { width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); padding: var(--space-4) var(--space-3); position: sticky; top: 0; height: 100vh; overflow-y: auto; overflow-x: visible; transition: width .2s ease; display: flex; flex-direction: column; justify-content: space-between; }
+.sidebar { width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); padding: var(--space-4) var(--space-3); position: fixed; left: 0; top: 0; height: 100vh; overflow-y: auto; overflow-x: visible; transition: width .2s ease; display: flex; flex-direction: column; justify-content: space-between; z-index: 65; }
 .sidebar.collapsed { width: 76px; }
 .brand { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3); margin-bottom: var(--space-5); }
 .brand-mark-img { width: 28px; height: 28px; opacity: .72; filter: grayscale(1); }
@@ -79,7 +79,8 @@ img { max-width: 100%; }
 .sidebar.collapsed .profile-menu { display: none !important; }
 .sidebar.collapsed .nav-separator { margin-left: 14px; margin-right: 14px; }
 
-.main { flex: 1; display: flex; flex-direction: column; min-width: 0; overflow-x: hidden; padding-top: 64px; padding-bottom: 56px; }
+.main { flex: 1; display: flex; flex-direction: column; min-width: 0; overflow-x: hidden; padding-top: 64px; padding-bottom: 56px; margin-left: var(--sidebar-w); }
+body.sidebar-collapsed .main { margin-left: 76px; }
 .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: var(--space-3) var(--space-5); display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: 64px; position: fixed; top: 0; left: var(--sidebar-w); right: 0; z-index: 60; }
 body.sidebar-collapsed .topbar { left: 76px; }
 .topbar-left { display: flex; align-items: center; gap: var(--space-3); }
@@ -88,7 +89,7 @@ body.sidebar-collapsed .topbar { left: 76px; }
 .topbar-mobile-brand { display: none; align-items: center; gap: 8px; }
 .topbar-mobile-brand-icon { width: 18px; height: 18px; opacity: .78; }
 .topbar-mobile-brand-name { font-size: 15px; font-weight: 600; color: #334155; }
-.mobile-menu-btn { display: none; }
+.mobile-menu-btn { display: none !important; }
 .topbar-subtitle { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
 .icon-btn { width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--border); background: #fff; cursor: pointer; display: grid; place-items: center; position: relative; color: #334155; }
 .icon-btn-sm { width: 30px; height: 30px; border-radius: 8px; }
@@ -138,18 +139,21 @@ body.sidebar-collapsed .footer { left: 76px; }
 
 @media (max-width: 960px) {
   .grid.cols-3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .main { padding-top: 64px; padding-bottom: 0; }
+  .main { padding-top: 64px; padding-bottom: 0; margin-left: 0; }
   .sidebar { position: fixed; left: -100%; z-index: 75; box-shadow: var(--shadow-md); justify-content: flex-start; }
   .sidebar.open { left: 0; }
   .sidebar-edge-toggle { display: none; }
   .sidebar-footer { order: -1; margin-top: 0; margin-bottom: 10px; border-top: 0; border-bottom: 1px solid var(--border); padding-top: 0; padding-bottom: 10px; }
+  .profile-menu { top: calc(100% + 8px); bottom: auto; }
+  .profile-caret .caret-icon { transform: rotate(180deg); }
+  .profile-trigger[aria-expanded='true'] .profile-caret .caret-icon { transform: rotate(0deg); }
   .topbar { left: 0 !important; right: 0; }
   .footer { position: static; left: auto; right: auto; }
   .content, .topbar, .footer { padding-left: var(--space-4); padding-right: var(--space-4); }
   .topbar-subtitle { display: none; }
   .topbar-title-wrap { display: none; }
   .topbar-mobile-brand { display: inline-flex; }
-  .mobile-menu-btn { display: inline-grid; }
+  .mobile-menu-btn { display: inline-grid !important; }
   .right-panel { width: 100vw; height: 100dvh; border-left: 0; }
   .panel-footer { position: sticky; bottom: 0; background: #fff; }
 }
