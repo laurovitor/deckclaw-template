@@ -1,4 +1,18 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Form layouts</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Form layouts</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head><body>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('Referência · Form layouts','Exemplos base de layouts de formulário.',`<article class="card"><h3>Referência · Form layouts</h3><p class="muted">Página pré-pronta para evolução.</p></article>`)
-</script><script src="assets/scripts/app.js"></script></body></html>
+renderLayout('Referência · Form layouts','Layouts horizontais e em grid para formulários.',`
+<div class='card'>
+  <h3>Layout em grid</h3>
+  <div class='row g-3'>
+    <div class='col-md-6'><label>Nome</label><input class='input' placeholder='Nome'></div>
+    <div class='col-md-6'><label>Sobrenome</label><input class='input' placeholder='Sobrenome'></div>
+    <div class='col-md-4'><label>Cidade</label><input class='input'></div>
+    <div class='col-md-4'><label>Estado</label><select><option>PR</option><option>SP</option></select></div>
+    <div class='col-md-4'><label>CEP</label><input class='input'></div>
+  </div>
+</div>
+`)
+</script><script src="assets/scripts/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body></html>

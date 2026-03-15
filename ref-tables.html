@@ -1,4 +1,21 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Tables</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Tables</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head><body>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('Referência · Tables','Exemplos base de tabelas e estados.',`<article class="card"><h3>Referência · Tables</h3><p class="muted">Página pré-pronta para evolução.</p></article>`)
-</script><script src="assets/scripts/app.js"></script></body></html>
+renderLayout('Referência · Tables','Tabela com busca, paginação e estados.',`
+<article class='card'>
+ <div class='toolbar mb-3'><input class='input' placeholder='Buscar...' style='max-width:260px'><button class='btn btn-secondary'>Filtrar</button></div>
+ <div class='table-wrap'>
+  <table class='table align-middle'>
+   <thead><tr><th>ID</th><th>Projeto</th><th>Owner</th><th>Status</th><th>Atualizado</th></tr></thead>
+   <tbody>
+    <tr><td>#1021</td><td>DeckClaw API</td><td>Lauro</td><td><span class='badge success'>Ativo</span></td><td>Agora</td></tr>
+    <tr><td>#1018</td><td>Template UI</td><td>Luna</td><td><span class='badge info'>Em revisão</span></td><td>5 min</td></tr>
+    <tr><td>#1012</td><td>OpenClaw Links</td><td>Ops</td><td><span class='badge warn'>Atenção</span></td><td>1h</td></tr>
+   </tbody>
+  </table>
+ </div>
+</article>
+`)
+</script><script src="assets/scripts/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body></html>
