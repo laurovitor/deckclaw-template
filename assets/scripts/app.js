@@ -83,18 +83,31 @@
 
   const profileToggle = document.querySelector('[data-profile-toggle]');
   const profileMenu = document.querySelector('[data-profile-menu]');
+  const profileCaret = profileToggle?.querySelector('.profile-caret');
+
+  function updateProfileCaret(open) {
+    if (!profileCaret) return;
+    profileCaret.innerHTML = open
+      ? '<i class="ri ri-arrow-down-s-line caret-icon" aria-hidden="true"></i>'
+      : '<i class="ri ri-arrow-up-s-line caret-icon" aria-hidden="true"></i>';
+  }
+
   if (profileToggle && profileMenu) {
+    updateProfileCaret(false);
+
     profileToggle.addEventListener('click', (ev) => {
       ev.stopPropagation();
       if (sidebar?.classList.contains('collapsed')) {
         openFloatingPopover(profileToggle, profileMenu.innerHTML);
         profileToggle.setAttribute('aria-expanded', 'true');
+        updateProfileCaret(true);
         return;
       }
 
       closeFloatingPopover();
       const open = profileMenu.classList.toggle('open');
       profileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      updateProfileCaret(open);
     });
 
     document.addEventListener('click', (ev) => {
@@ -102,6 +115,7 @@
       if (!clickedProfile) {
         profileMenu.classList.remove('open');
         profileToggle.setAttribute('aria-expanded', 'false');
+        updateProfileCaret(false);
       }
 
       if (floatingPopover && !floatingPopover.contains(ev.target)) {

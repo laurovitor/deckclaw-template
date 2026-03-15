@@ -13,6 +13,8 @@ function icon(name, cls = '') {
     chat: 'ri-chat-3-line',
     bell: 'ri-notification-3-line',
     chevron: 'ri-arrow-down-s-line',
+    'chevron-up': 'ri-arrow-up-s-line',
+    'chevron-down': 'ri-arrow-down-s-line',
     'chevron-left': 'ri-arrow-left-s-line',
     'chevron-right': 'ri-arrow-right-s-line',
     close: 'ri-close-line',
@@ -99,7 +101,7 @@ function renderLayout(title, subtitle, body) {
         <button class="profile-trigger" data-profile-toggle aria-expanded="false" title="Perfil do usuário">
           <img class="profile-photo" src="https://i.pravatar.cc/80?img=12" alt="Foto de perfil de Lauro Vitor">
           <span class="profile-name">Lauro Vitor</span>
-          <span class="nav-caret" aria-hidden="true">${icon('chevron', 'caret-icon up')}</span>
+          <span class="nav-caret profile-caret" aria-hidden="true">${icon('chevron-up', 'caret-icon')}</span>
         </button>
 
         <div class="profile-menu" data-profile-menu>
