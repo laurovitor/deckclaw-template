@@ -1,15 +1,18 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Editors</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-<link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
-</head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Editors</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"><link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet"></head><body>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('Referência · Editors','Editor rico para textos longos e notas.',`
-<div class='grid cols-2'>
- <article class='card'><h3>Quill Editor</h3><div id='editor' style='height:220px;background:#fff;border:1px solid var(--border);border-radius:8px'></div></article>
- <article class='card'><h3>Preview</h3><div id='editorPreview' class='muted'>Digite no editor para visualizar aqui.</div></article>
+renderLayout('Referência · Editors','Editor rico no estilo corporativo com preview de saída.',`
+<div class="grid cols-2">
+  <article class="card"><h3>Quill Editor</h3><div id="toolbar"></div><div id="editor" style="height:260px;background:#fff;border:1px solid var(--border);border-radius:8px"></div></article>
+  <article class="card"><h3>Preview HTML</h3><pre id="editorPreview" style="white-space:pre-wrap;background:#0b1220;color:#dbe7f4;padding:12px;border-radius:8px;min-height:260px"></pre></article>
 </div>
 `)
-</script><script src="assets/scripts/app.js"></script>
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
-<script>const q=new Quill("#editor",{theme:"snow"});q.on("text-change",()=>{document.querySelector("#editorPreview").textContent=q.getText().trim()||"Digite no editor para visualizar aqui."});</script>
-</body></html>
+<script src="assets/scripts/app.js"></script>
+<script>
+const q=new Quill('#editor',{theme:'snow',modules:{toolbar:[['bold','italic','underline'],[{header:[1,2,3,false]}],[{list:'ordered'},{list:'bullet'}],['link','blockquote','code-block'],['clean']]}});
+const p=document.getElementById('editorPreview');
+function sync(){p.textContent=q.root.innerHTML.trim()||'<p></p>';}
+q.on('text-change',sync); sync();
+</script></body></html>
