@@ -1,8 +1,16 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · UI Kit</title><link rel="icon" type="image/svg+xml" href="assets/icons/deckclaw-mark.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · UI Kit</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('UI Kit','Cards, botões, badges, tabela e modal no padrão visual aplicado.',`
-<div class="grid cols-3"><div class="card"><h3>Card padrão</h3><p class="muted">Borda suave + shadow discreta.</p></div><div class="card"><h3>Badges</h3><span class="badge info">Info</span> <span class="badge success">Success</span> <span class="badge warn">Warning</span> <span class="badge danger">Danger</span></div><div class="card"><h3>Botões</h3><button class="btn btn-primary" data-loading>Loading</button> <button class="btn btn-secondary">Secundário</button> <button class="btn btn-danger" disabled>Disabled</button></div></div>
-<div class="card" style="margin-top:16px"><h3>Modal de confirmação</h3><p class="muted" style="margin-bottom:12px">Mesmo estilo usado nas páginas operacionais.</p><button class="btn btn-secondary" data-open-modal="#demoModal">Abrir modal</button> <button class="btn btn-primary" data-toast="Ação salva com sucesso">Mostrar toast</button></div>
-<div class="modal" id="demoModal"><div class="modal-dialog"><h3>Confirmar ação</h3><p class="muted" style="margin-bottom:14px">Deseja publicar as alterações no workspace?</p><button class="btn btn-primary" data-close-modal>Confirmar</button> <button class="btn btn-secondary" data-close-modal>Cancelar</button></div></div>
+renderLayout('UI Kit','Componentes base e exemplos de gráficos.',`
+<div class="grid cols-2">
+  <article class="card"><h3>Componentes rápidos</h3><p class="muted">Badges, botões, inputs e cards.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><span class="badge success">Success</span><span class="badge info">Info</span><span class="badge warn">Warn</span></div></article>
+  <article class="card"><h3>Gráfico de barras</h3><div id="chart-bars" style="height:240px"></div></article>
+</div>
+<div class="grid cols-2" style="margin-top:16px">
+  <article class="card"><h3>Gráfico de área</h3><div id="chart-area" style="height:240px"></div></article>
+  <article class="card"><h3>Resumo</h3><p class="muted">ApexCharts pronto para widgets no template.</p></article>
+</div>
 `)
+new ApexCharts(document.querySelector('#chart-bars'),{chart:{type:'bar',toolbar:{show:false}},series:[{name:'Projetos',data:[3,5,4,7,6]}],xaxis:{categories:['Jan','Fev','Mar','Abr','Mai']},colors:['#6366f1']}).render();
+new ApexCharts(document.querySelector('#chart-area'),{chart:{type:'area',toolbar:{show:false}},series:[{name:'Atividade',data:[10,16,12,20,18,24]}],xaxis:{categories:['10h','12h','14h','16h','18h','20h']},colors:['#0ea5e9'],stroke:{curve:'smooth'}}).render();
 </script><script src="assets/scripts/app.js"></script></body></html>

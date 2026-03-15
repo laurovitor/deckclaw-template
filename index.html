@@ -1,14 +1,17 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Dashboard</title><link rel="icon" type="image/svg+xml" href="assets/icons/deckclaw-mark.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Dashboard</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('Dashboard','Visão geral com cards e atividade no mesmo ritmo visual do DeckClaw atual.',`
+renderLayout('Dashboard','Visão geral com dados e widgets reativos.',`
 <div class="grid cols-3">
   <article class="card"><h3>Vagas ativas</h3><p class="metric">18</p><span class="badge success">+12% no mês</span></article>
   <article class="card"><h3>Candidatos em processo</h3><p class="metric">246</p><span class="badge info">34 em entrevista</span></article>
   <article class="card"><h3>Tarefas pendentes</h3><p class="metric">21</p><span class="badge warn">7 vencem hoje</span></article>
 </div>
 <div class="grid cols-2" style="margin-top:16px">
-  <article class="card"><h3>Atividade recente</h3><ul class="list"><li>Nova vaga “Frontend Sênior” criada por Ana.</li><li>Candidato Lucas aprovado para etapa final.</li><li>Integração OpenClaw sincronizada sem falhas.</li></ul></article>
-  <article class="card"><h3>Pipeline de hoje</h3><div class="table-wrap"><table><thead><tr><th>Etapa</th><th>Qtd.</th><th>Status</th></tr></thead><tbody><tr><td>Triagem</td><td>56</td><td><span class="badge info">Em andamento</span></td></tr><tr><td>Entrevista</td><td>34</td><td><span class="badge success">No prazo</span></td></tr><tr><td>Oferta</td><td>9</td><td><span class="badge warn">Atenção</span></td></tr></tbody></table></div></article>
+  <article class="card"><h3>Atividade semanal</h3><div id="chart-line" style="height:260px"></div></article>
+  <article class="card"><h3>Status de pipeline</h3><div id="chart-donut" style="height:260px"></div></article>
 </div>
 `)
+new ApexCharts(document.querySelector('#chart-line'),{chart:{type:'line',toolbar:{show:false}},series:[{name:'Tasks',data:[12,18,15,22,19,24,21]}],xaxis:{categories:['Seg','Ter','Qua','Qui','Sex','Sáb','Dom']},stroke:{curve:'smooth',width:3},colors:['#3b82f6']}).render();
+new ApexCharts(document.querySelector('#chart-donut'),{chart:{type:'donut'},series:[44,32,24],labels:['Triagem','Entrevista','Oferta'],colors:['#3b82f6','#22c55e','#f59e0b'],legend:{position:'bottom'}}).render();
 </script><script src="assets/scripts/app.js"></script></body></html>

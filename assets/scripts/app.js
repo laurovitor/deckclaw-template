@@ -1,6 +1,7 @@
 (function () {
   const sidebar = document.querySelector('.sidebar');
   const toggle = document.querySelector('[data-sidebar-toggle]');
+  const sidebarIcon = document.querySelector('[data-sidebar-icon]');
   const floatingPopover = document.querySelector('[data-floating-popover]');
 
   function closeFloatingPopover() {
@@ -9,20 +10,56 @@
     floatingPopover.innerHTML = '';
   }
 
-  function openFloatingPopover(trigger, html) {
+  function positionFloatingPopover(trigger) {
     if (!floatingPopover || !trigger) return;
     const rect = trigger.getBoundingClientRect();
+    const margin = 8;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const popRect = floatingPopover.getBoundingClientRect();
+
+    let left = rect.right + margin;
+    if (left + popRect.width > vw - margin) {
+      left = Math.max(margin, rect.left - popRect.width - margin);
+    }
+
+    let top = rect.top;
+    if (top + popRect.height > vh - margin) {
+      top = Math.max(margin, rect.bottom - popRect.height);
+    }
+
+    if (top < margin) top = margin;
+    floatingPopover.style.left = `${left}px`;
+    floatingPopover.style.top = `${top}px`;
+  }
+
+  function openFloatingPopover(trigger, html) {
+    if (!floatingPopover || !trigger) return;
     floatingPopover.innerHTML = html;
-    floatingPopover.style.left = `${rect.right + 10}px`;
-    floatingPopover.style.top = `${Math.max(8, rect.top)}px`;
     floatingPopover.classList.add('open');
+    requestAnimationFrame(() => positionFloatingPopover(trigger));
+  }
+
+  function updateSidebarIcon() {
+    if (!sidebarIcon) return;
+    const isMobile = window.innerWidth <= 960;
+    const collapsed = isMobile ? !sidebar?.classList.contains('open') : sidebar?.classList.contains('collapsed');
+    sidebarIcon.innerHTML = collapsed
+      ? '<i class="ri ri-arrow-right-s-line sidebar-toggle-icon" aria-hidden="true"></i>'
+      : '<i class="ri ri-arrow-left-s-line sidebar-toggle-icon" aria-hidden="true"></i>';
   }
 
   if (toggle && sidebar) {
+    updateSidebarIcon();
     toggle.addEventListener('click', () => {
       if (window.innerWidth <= 960) sidebar.classList.toggle('open');
       else sidebar.classList.toggle('collapsed');
       closeFloatingPopover();
+      updateSidebarIcon();
+    });
+    window.addEventListener('resize', () => {
+      closeFloatingPopover();
+      updateSidebarIcon();
     });
   }
 
@@ -98,6 +135,34 @@
   document.querySelectorAll('[data-overlay-dismiss]').forEach(el => {
     el.addEventListener('click', closePanels);
   });
+
+  document.querySelectorAll('[data-dropdown-toggle]').forEach(toggleBtn => {
+    const menu = toggleBtn.parentElement?.querySelector('[data-dropdown-menu]');
+    toggleBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      document.querySelectorAll('[data-dropdown-menu].open').forEach(openMenu => {
+        if (openMenu !== menu) openMenu.classList.remove('open');
+      });
+      menu?.classList.toggle('open');
+    });
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('[data-dropdown-menu].open').forEach(menu => menu.classList.remove('open'));
+  });
+
+  document.querySelectorAll('[data-close-item]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('[data-notification-item]')?.remove();
+    });
+  });
+
+  const markAllRead = document.querySelector('[data-mark-all-read]');
+  if (markAllRead) {
+    markAllRead.addEventListener('click', () => {
+      document.querySelectorAll('[data-notification-item]').forEach(item => item.classList.add('is-read'));
+    });
+  }
 
   document.querySelectorAll('[data-loading]').forEach(btn => {
     btn.addEventListener('click', () => {
