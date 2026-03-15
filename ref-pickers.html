@@ -1,4 +1,25 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Pickers</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Pickers</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"></head><body>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('Referência · Pickers','Exemplos base de date/time/color pickers.',`<article class="card"><h3>Referência · Pickers</h3><p class="muted">Página pré-pronta para evolução.</p></article>`)
-</script><script src="assets/scripts/app.js"></script></body></html>
+renderLayout('Referência · Pickers','Date/time pickers com visual limpo e leve.',`
+<div class="grid cols-2">
+  <article class="card"><h3>Date picker</h3>
+    <div class="field"><label>Data inicial</label><input id="dateStart" class="input" placeholder="Selecione"></div>
+    <div class="field"><label>Data final</label><input id="dateEnd" class="input" placeholder="Selecione"></div>
+  </article>
+  <article class="card"><h3>Time + range</h3>
+    <div class="field"><label>Horário</label><input id="timePicker" class="input" placeholder="hh:mm"></div>
+    <div class="field"><label>Período</label><input id="rangePicker" class="input" placeholder="Escolha o intervalo"></div>
+  </article>
+</div>
+`)
+</script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+<script src="assets/scripts/app.js"></script>
+<script>
+flatpickr.localize(flatpickr.l10ns.pt);
+flatpickr('#dateStart',{dateFormat:'d/m/Y'});
+flatpickr('#dateEnd',{dateFormat:'d/m/Y'});
+flatpickr('#timePicker',{enableTime:true,noCalendar:true,dateFormat:'H:i'});
+flatpickr('#rangePicker',{mode:'range',dateFormat:'d/m/Y'});
+</script></body></html>

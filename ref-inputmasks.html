@@ -1,4 +1,23 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Inputmasks</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('Referência · Inputmasks','Exemplos base de máscaras de entrada.',`<article class="card"><h3>Referência · Inputmasks</h3><p class="muted">Página pré-pronta para evolução.</p></article>`)
-</script><script src="assets/scripts/app.js"></script></body></html>
+renderLayout('Referência · Inputmasks','Máscaras de entrada no estilo dos formulários de referência.',`
+<div class="grid cols-2">
+  <article class="card"><h3>Documentos</h3>
+    <div class="field"><label>CPF</label><input id="cpf" class="input" placeholder="000.000.000-00"></div>
+    <div class="field"><label>CNPJ</label><input id="cnpj" class="input" placeholder="00.000.000/0000-00"></div>
+  </article>
+  <article class="card"><h3>Contato</h3>
+    <div class="field"><label>Telefone</label><input id="phone" class="input" placeholder="(00) 00000-0000"></div>
+    <div class="field"><label>Moeda</label><input id="money" class="input" placeholder="R$ 0,00"></div>
+  </article>
+</div>
+`)
+</script>
+<script src="https://cdn.jsdelivr.net/npm/imask"></script>
+<script src="assets/scripts/app.js"></script>
+<script>
+IMask(document.getElementById('cpf'),{mask:'000.000.000-00'});
+IMask(document.getElementById('cnpj'),{mask:'00.000.000/0000-00'});
+IMask(document.getElementById('phone'),{mask:'(00) 00000-0000'});
+IMask(document.getElementById('money'),{mask:Number,scale:2,signed:false,thousandsSeparator:'.',padFractionalZeros:true,normalizeZeros:true,radix:',',mapToRadix:['.'],prefix:'R$ '});
+</script></body></html>

@@ -1,4 +1,24 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeckClaw · Referência · Validation</title><link rel="icon" type="image/svg+xml" href="assets/icons/brand.svg"><link rel="stylesheet" href="assets/styles/base.css"><link rel="stylesheet" href="assets/styles/components.css"></head><body>
 <script src="assets/scripts/layout.js"></script><script>
-renderLayout('Referência · Validation','Exemplos base de estados de validação.',`<article class="card"><h3>Referência · Validation</h3><p class="muted">Página pré-pronta para evolução.</p></article>`)
-</script><script src="assets/scripts/app.js"></script></body></html>
+renderLayout('Referência · Validation','Exemplo de validação de formulário com feedback visual.',`
+<article class="card" style="max-width:720px">
+  <h3>Cadastro de contato</h3>
+  <form id="valForm">
+    <div class="field"><label>Nome</label><input id="vName" class="input" type="text" placeholder="Nome completo"></div>
+    <div class="field"><label>Email</label><input id="vEmail" class="input" type="email" placeholder="email@empresa.com"></div>
+    <div class="field"><label>Senha</label><input id="vPass" class="input" type="password" placeholder="Mínimo 8 caracteres"></div>
+    <button class="btn btn-primary" type="submit">Validar</button>
+  </form>
+</article>
+`)
+</script>
+<script src="https://cdn.jsdelivr.net/npm/just-validate@4.3.0/dist/just-validate.production.min.js"></script>
+<script src="assets/scripts/app.js"></script>
+<script>
+const validation = new JustValidate('#valForm');
+validation
+  .addField('#vName',[{rule:'required'},{rule:'minLength',value:3}])
+  .addField('#vEmail',[{rule:'required'},{rule:'email'}])
+  .addField('#vPass',[{rule:'required'},{rule:'minLength',value:8}])
+  .onSuccess(()=>alert('Formulário válido ✅'));
+</script></body></html>
