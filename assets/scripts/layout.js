@@ -100,9 +100,6 @@ function renderLayout(title, subtitle, body) {
 
         <div class="profile-menu" data-profile-menu>
           ${dropdownLink('settings.html', 'Minha conta', 'user')}
-          ${dropdownLink('openclaw.html', 'Integrações', 'plug')}
-          ${dropdownLink('support.html', 'Suporte', 'chat')}
-          ${dropdownLink('terms.html', 'Termos', 'info')}
           <label class="theme-switch-row" for="themeToggle">
             <span class="menu-item-icon">${icon('spark')}</span>
             <span>Tema escuro</span>
